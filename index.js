@@ -8,19 +8,30 @@ const app = new App({
   socketMode: true
 });
 
+const availableCommands = {
+    "ping": "/obebot-ping Measures the latency of the Slack Bot in millseconds and responds with 'Pong!'"
+};
+
 app.command("/obebot-ping", async ({ command, ack, respond }) => {
   const start = Date.now();
   await ack();
   const latency = Date.now() - start;
   await respond({ text: `Pong!\nLatency: ${latency}ms` });
 });
-app.command("/obebot-help", async ({ ack, respond }) => {
+app.command("/obebot-help", async ({ command, ack, respond}) => {
   await ack();
-  await respond({
-    text:
-`Available Commands:
-/obebot-ping - Check bot latency`
-  });
+  if(command.text == "") {
+    await respond({
+        text:
+        `Available Commands:
+        /obebot-ping - Check bot latency`
+    });
+  }
+  else {
+    await respond({
+        text: availableCommands[command.text]
+    });
+  }
 });
 
 (async () => {
