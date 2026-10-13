@@ -1,5 +1,7 @@
 # ObeBot - A Simple Slack Helper Bot
 
+![ObeBot being used inside Slack, responding to different slash commands](./obebot-helper-screenshot.png)
+
 ## How to Use
 You can test the bot out on Hack Club's Slack workspace, in the **[bot-spam channel](https://app.slack.com/client/E09V59WQY1E/C0P5NE354)**.
 
